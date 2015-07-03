@@ -22,19 +22,47 @@ $(function() {
 
 		var ret = pushState.apply(history, arguments);
 		rooted = false;
-
+		console.log(location.href, /\/b\/([^\/]*)\//g.test(location.href));
 		if (/\/b\/([^\/]*)\//g.test(location.href)) {
 			main();
 		}
 	};
 
+	function escapeHtml(text) {
+		var map = {
+			'&': '&amp;',
+			'<': '&lt;',
+			'>': '&gt;',
+			'"': '&quot;',
+			"'": '&#039;'
+		};
+
+		return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+	}
+
 	function windowStat(stat) {
-		var strStat = "<ul>";
+		var gstat = {}, tstat = {};
 
 		stat.forEach(function(card) {
 			var date = new Date(card.date);
-			strStat += "<li><h4>" + card.list + "</h4><p>" + card.time + "</p>" + date + "</li>";
+
+			if (!gstat[card.list]) {
+				gstat[card.list] = "";
+				tstat[card.list] = 0;
+			}
+
+			gstat[card.list] += "<p>" + card.time + " - " + date + "</p>";
+			tstat[card.list] += card.time_src;
 		});
+
+		var strStat = "<ul>";
+
+		for (var list in gstat) {
+			strStat += 
+				"<li><h4>" + escapeHtml(list) + "</h4>" 
+					+ "<b>Total:</b> " + minsToString(tstat[list]) + "<br>"
+					+ gstat[list] + "</li>";
+		}
 
 		strStat += "</ul>";
 
@@ -70,7 +98,7 @@ $(function() {
 
 		setTimeout(function() {
 
-			if (oldBoard == $(".board-widget-members")[0]) {
+			if (!$(".board-widget-members").length || oldBoard == $(".board-widget-members")[0]) {
 				return bindUI();
 			}
 
@@ -116,7 +144,13 @@ $(function() {
 					time = time[1].split(":");
 					time = time[0]*60 + time[1]*1;
 					minutes += time;
-					stat.push({ list: comment.data.card.name, time: minsToString(time), date: comment.date });
+
+					stat.push({ 
+						list: comment.data.card.name, 
+						time: minsToString(time), 
+						time_src: time, 
+						date: comment.date 
+					});
 				}
 
 				return false;
