@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Trimmo",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "content_scripts": [{
         "matches": ["<all_urls>"],
         "js": ["main.js"]

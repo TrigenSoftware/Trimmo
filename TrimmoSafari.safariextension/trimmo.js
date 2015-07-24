@@ -18,7 +18,7 @@ $(function() {
 	}
 
 	window.history.pushState = function() {
-		oldBoard = rooted ? false : $(".board-widget-members")[0];
+		oldBoard = rooted ? false : $(".js-list-board-members")[0];
 
 		var ret = pushState.apply(history, arguments);
 		rooted = false;
@@ -98,11 +98,11 @@ $(function() {
 
 		setTimeout(function() {
 
-			if (!$(".board-widget-members").length || oldBoard == $(".board-widget-members")[0]) {
+			if (!$(".js-list-board-members").length || oldBoard == $(".js-list-board-members")[0]) {
 				return bindUI();
 			}
 
-			$(".board-widget-members .member").attr("onclick", "TRIMMO(this)");
+			$(".js-list-board-members .member").attr("onclick", "TRIMMO(this)");
 
 		}, 500);
 	}
