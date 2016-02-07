@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>TrigenSoftware</string>
 	<key>Builder Version</key>
-	<string>9537.85.16.12</string>
+	<string>11601.4.4</string>
 	<key>CFBundleDisplayName</key>
 	<string>Trimmo</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.9</string>
+	<string>2.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -34,7 +34,7 @@
 	<key>Description</key>
 	<string>Trello time tracking</string>
 	<key>DeveloperIdentifier</key>
-	<string>MH9MJV9BHD</string>
+	<string>0000000000</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
