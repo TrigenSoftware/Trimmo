@@ -116,13 +116,13 @@ function bindUI() {
 
 	setTimeout(function() {
 
-		var boardMembers = $(".js-list-members");
+		var boardMembers = $(".js-list-team-members");
 
 		if (!boardMembers.length || oldBoard == boardMembers[0]) {
 			return bindUI();
 		}
 
-		console.log("UI is builded");
+		console.log("UI is builded", boardMembers);
 		boardMembers.find(".member").attr("onclick", "TRIMMO(this)");
 
 	}, 500);
